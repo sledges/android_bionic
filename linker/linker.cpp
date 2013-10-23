@@ -614,7 +614,9 @@ static void dump(soinfo *si)
 #endif
 
 static const char * const sopaths[] = {
-    "/vendor/lib",
+	"/usr/libexec/droid-hybris/vendor/lib",
+	"/usr/libexec/droid-hybris/system/lib",
+	"/vendor/lib",
     "/system/lib",
     0
 };
@@ -1887,7 +1889,7 @@ sanitize:
          * Don't use soinfo_alloc(), because the linker shouldn't
          * be on the soinfo list.
          */
-    strlcpy((char*) linker_soinfo.name, "/system/bin/linker", sizeof linker_soinfo.name);
+    strlcpy((char*) linker_soinfo.name, "/usr/libexec/droid-hybris/system/bin/linker", sizeof linker_soinfo.name);
     linker_soinfo.flags = 0;
     linker_soinfo.base = linker_base;
     /*
