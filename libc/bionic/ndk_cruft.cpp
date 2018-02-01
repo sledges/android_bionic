@@ -49,6 +49,11 @@
 
 extern "C" {
 
+void** __get_tls_hooks(void) {
+#include "private/__get_tls_internal.h"
+  return __get_tls_internal();
+}
+
 // LP64 doesn't need to support any legacy cruft.
 #if !defined(__LP64__)
 
@@ -72,8 +77,8 @@ int __open() {
 
 // TODO: does anything still need this?
 void** __get_tls() {
-#include "private/__get_tls.h"
-  return __get_tls();
+#include "private/__get_tls_internal.h"
+  return __get_tls_internal();
 }
 
 // This non-standard function was in our <string.h> for some reason.
